@@ -1,0 +1,157 @@
+import { motion } from "framer-motion";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import { PageBackground } from "../components/PageBackground";
+import { AboutSection } from "../components/AboutSection";
+import { PartnersSection } from "../components/PartnersSection";
+import { useEffect } from "react";
+import { ScrollToTop } from "../components/ScrollToTop";
+
+export function CareerPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  return (
+    <div className="relative min-h-screen dark:text-white text-black overflow-hidden">
+      <PageBackground />
+      <div className="pointer-events-none absolute inset-0 dark:bg-gradient-to-b dark:from-black/30 dark:via-slate-950/14 dark:to-black/45 bg-gradient-to-b from-white/40 via-slate-200/20 to-white/50" />
+      <Navbar />
+
+      <ScrollToTop />
+
+      <main className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20 space-y-12">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="space-y-6"
+          style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+        >
+          <motion.p
+            className="text-cyan-300 uppercase tracking-[0.3em] text-xs md:text-sm"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          >
+            Careers at Tutelar
+          </motion.p>
+          <motion.h1
+            className="text-4xl md:text-5xl font-extrabold tracking-tight"
+            initial={{ scale: 0.9, filter: "blur(6px)" }}
+            animate={{
+              scale: [0.9, 1.08, 1],
+              filter: ["blur(6px)", "blur(2px)", "blur(0px)"],
+            }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          >
+            Build the future of cybersecurity with us
+          </motion.h1>
+          <motion.p
+            className="text-lg dark:text-gray-200 text-gray-700 leading-relaxed max-w-3xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          >
+            Join a team that blends deep domain expertise with relentless
+            innovation. We’re always looking for engineers, analysts, and
+            creators who want to ship secure, high-impact solutions for our
+            customers worldwide.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          className="grid gap-6 md:grid-cols-3"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+        >
+          {[
+            {
+              title: "Security Engineering",
+              text: "Design and build defenses across network, cloud, and applications.",
+            },
+            {
+              title: "Threat & SOC",
+              text: "Hunt threats, respond to incidents, and operationalize detection.",
+            },
+            {
+              title: "DevSecOps",
+              text: "Embed security into CI/CD, automation, and runtime protection.",
+            },
+            {
+              title: "Product Design",
+              text: "Create intuitive, powerful interfaces for complex security tools.",
+            },
+            {
+              title: "Sales & Marketing",
+              text: "Bring our mission to the world and grow our global footprint.",
+            },
+            {
+              title: "Customer Success",
+              text: "Ensure our partners maximize value and stay secure 24/7.",
+            },
+          ].map((role) => (
+            <motion.div
+              key={role.title}
+              className="p-6 rounded-2xl border dark:border-white/10 border-black/10 dark:bg-white/5 bg-black/5 shadow-lg dark:shadow-cyan-500/10 shadow-black/10"
+              whileHover={{ scale: 1.03 }}
+              style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+            >
+              <h3 className="text-xl font-semibold mb-2">{role.title}</h3>
+              <p className="dark:text-gray-200 text-gray-700">{role.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 rounded-2xl p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-lg dark:shadow-cyan-500/10 shadow-black/10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 }}
+          style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+        >
+          <div>
+            <h3 className="text-2xl font-semibold mb-2">
+              We’d love to meet you
+            </h3>
+            <p className="dark:text-gray-200 text-gray-700">
+              Share your profile or ask about open roles. We’ll reach out soon.
+            </p>
+          </div>
+          <motion.a
+            href="/#contact"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          >
+            Get in touch
+          </motion.a>
+        </motion.div>
+      </main>
+
+      <section className="relative z-10">
+        <PartnersSection />
+      </section>
+
+      <section className="relative z-10">
+        <AboutSection />
+      </section>
+
+      <motion.div
+        className="relative z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+      >
+        <Footer />
+      </motion.div>
+    </div>
+  );
+}

@@ -1,0 +1,75 @@
+import { motion } from 'framer-motion';
+import { Check, Zap, Globe, Users } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
+
+const features = [
+  {
+    icon: <Check className="w-10 h-10 text-cyan-400" />,
+    title: '100% Ownership',
+    description: 'End to End project management with full ownership of the project',
+  },
+  {
+    icon: <Zap className="w-10 h-10 text-cyan-400" />,
+    title: 'Audit Services',
+    description: 'Security Audit for governance, compliance, and risk management',
+  },
+  {
+    icon: <Globe className="w-10 h-10 text-cyan-400" />,
+    title: 'Global Cyber Expertise',
+    description: 'Experienced security specialists from around the world',
+  },
+  {
+    icon: <Users className="w-10 h-10 text-cyan-400" />,
+    title: 'Customer-Centric Approach',
+    description: 'We work closely with clients to secure their digital assets',
+  },
+];
+
+export function WhyChooseSection() {
+  return (
+    <section id="why-choose-us" className="section py-20 dark:text-white text-black">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+            Why Choose Us
+          </h2>
+          <p className="text-center dark:text-gray-400 text-gray-700 max-w-3xl mx-auto mb-12">
+            We deliver high-performance cybersecurity solutions backed by cutting-edge technology and world-class expertise.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-4 gap-10 mt-12">
+          {features.map((feature, index) => (
+            <AnimatedSection key={index} delay={index * 0.2}>
+              <motion.div
+                className="p-8 rounded-xl dark:bg-[#0D0F1A] bg-white border dark:border-white/10 border-black/10 hover:border-cyan-500/50 hover:shadow-xl dark:hover:shadow-cyan-500/15 hover:shadow-black/10 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.06, y: -10, rotate: -1.5 }}
+                whileTap={{ scale: 0.97 }}
+                style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+              >
+                <motion.div
+                  className="mb-4 inline-flex items-center justify-center"
+                  whileHover={{ y: -8, scale: 1.14, rotate: -5 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 16 }}
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                >
+                  {feature.icon}
+                </motion.div>
+
+                <h4 className="text-xl mb-2 dark:text-white text-black">
+                  {feature.title}
+                </h4>
+                <p className="dark:text-gray-400 text-gray-700">
+                  {feature.description}
+                </p>
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
